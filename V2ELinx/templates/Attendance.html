@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Set Attendance</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+        <script src="/static/scripts.js"></script>
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/">Home</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="activated">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent">Add New Student</a>
+                    <a href="GetStudentDetails">Get Student Details</a>
+                    <a href="Attendance" class="activated">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Marks
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="GetMarks">Get Marks</a>
+                    <a href="SetMarks">Set Marks</a>
+                    <a href="UpdateMarks">Update Marks</a>
+                </div>
+            </div>
+            <a href="Ranks">Ranks</a>
+            <a href="Contact">Contact</a>
+            <!-- <a href="UserManual">User Manual</a> -->
+        </div>
+        <div id="content">
+            <form action="" method="post" id="selectStandard">
+                {% csrf_token %}
+                <div id="form">
+                    <h1>Set Student Attendance</h1>
+                    <div class="form-group">
+                        <label for="standard">Select Standard:</label>
+                        <select id="standard" name="standard">
+                            <option value="8" {% if std == '8' %}selected{% endif %}>8</option>
+                            <option value="9" {% if std == '9' %}selected{% endif %}>9</option>
+                            <option value="10" {% if std == '10' %}selected{% endif %}>10</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Refresh List">
+                    <br><br>
+             </form>
+            <form action="" method="post" id="selectRegisterNo" name="attendance">
+                {% csrf_token %}
+                <input type="hidden" name="standard" value="{{ std }}">
+                <div class="form-group">
+                    <label for="registerNo">Select or Traverse Register No.:</label>
+                    <img src="static/previous.png" class="button" id="previousButton" onclick="showPrevious()" style="margin-bottom: -15px">
+                    <select class="dllselect" id="registerNo" name="registerNo">
+                        {% for student in students %}
+                            <option value="{{ student }}">{{ student }}</option>
+                        {% endfor %}
+                    </select>
+                    <img src="static/next.png" class="button" onclick="showNext()" style="margin-bottom: -15px">
+                </div>
+                <input type="submit" value="Mark as Present">
+            </form>
+            <p><b>NOTE:</b> Students marked as present will be removed from the list.</p>
+            <p><b>NOTE:</b> Once a student is marked as present, they cannot be marked as absent.</p>
+        </div>
+    </body>
+</html>

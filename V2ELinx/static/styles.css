@@ -1,0 +1,377 @@
+
+body {
+    margin: 0;
+    font-family: 'Consolas';
+    background-color: grey;
+    color: white;
+    
+}
+
+::selection{
+    color: white;
+    cursor: pointer;
+    /* background-color: lightgrey; */
+}
+ 
+#sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    background-color: #333;
+    padding-top: 20px;
+    color: white;
+}
+
+#sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: background 0.3s ease-in-out;
+}
+
+#sidebar a:hover {
+    background-color: #555;
+    color: dodgerblue;
+}
+
+#sidebar .dropdown {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#sidebar .dropdown-content {
+    display: none;
+    padding-left: 15px;
+}
+
+#sidebar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#sidebar .activated{
+    color: dodgerblue;
+}
+
+#content {
+    margin-left: 250px;
+    padding: 20px;
+    border: 10px solid black;
+    /* border-radius: 20px; */
+}
+
+#form {
+    margin: auto;
+    width: auto;
+    border: 3px solid rgb(255, 77, 46);
+    padding: 20px;
+    text-align: center;
+    background-color: #ccccccd4;
+    color: #333;
+    border-radius: 90px;
+    margin: 0px 10px 0px 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: inline-block;
+    width: 180px;
+    margin-bottom: 5px;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+::placeholder{
+    color: black;
+}
+
+select,
+input[type="text"],
+input[type="number"],
+input[type="loginid"],
+input[type="password"] {
+    width: 25%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Consolas';
+    background-color: rgba(255, 255, 255, 0.986);
+}
+
+select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="loginid"]:focus,
+input[type="password"]:focus {
+    box-shadow: 0 0 10px 5px rgb(231, 231, 231);
+    outline: none;
+}
+
+select:hover,
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="loginid"]:hover,
+input[type="password"]:hover {
+    box-shadow: 0 0 10px 5px rgb(231, 231, 231);
+    outline: none;
+}
+
+select::selection,
+input[type="text"]::selection,
+input[type="number"]::selection,
+input[type="loginid"]::selection,
+input[type="password"]::selection {
+    background-color: black;
+    color: white;
+}
+
+.dllselect{
+    width: 16%;
+}
+
+input[type="submit"] {
+    background-color: rgb(255, 77, 46);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Consolas';
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 0 10px 5px rgb(201, 115, 100);
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    #sidebar a {
+        float: left;
+        width: 100%;
+    }
+
+    #content {
+        margin-left: 0;
+    }
+}
+
+img{
+    height: 18px;
+    width: 18px;
+}
+
+#droptopImg {
+    display: none;
+}
+
+.dropdown:hover #dropdownImg {
+    display: none;
+}
+
+.dropdown:hover #droptopImg {
+    display: inline-block; 
+}
+
+#droptopImgHover,
+#droptopImg {
+    display: none;
+}
+
+.dropdown-btn:hover #droptopImgHover {
+    display: inline-block;
+}
+
+.dropdown-content:hover #droptopImg {
+    display: inline-block;
+}
+
+table{
+    /* border: solid black; */
+    width: auto;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: context-menu;
+    cursor: text;
+}
+
+th{
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+th:hover{
+    background-color: #ffffff27;
+}
+
+td{
+    padding: 2px;
+    border: 1px solid black;
+    padding-bottom: 0%;
+}
+
+tr:hover{
+    color: black;
+    background-color: #ffffff27;
+}
+
+th, td{
+    padding: 3px 5px 3px 5px;
+}
+
+h1{
+    color: dodgerblue;
+    font-size: 40px;
+}
+
+.sidebyside{
+    display: grid;
+    text-align: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sideimg{
+    height: 50px;
+    width: 50px;
+}
+
+.button {
+    padding: 10.5px;
+    background-color: rgb(255, 77, 46);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Consolas';
+}
+
+.button:hover {
+    box-shadow:0 0 10px 10px rgb(201, 115, 100);
+}
+
+/* .button:hover::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: pulse 1s infinite;
+} */
+
+a{
+    color: white;
+    text-decoration: none;
+}
+.dllbtn{
+    text-align: center;
+}
+
+p{
+    text-align: left;
+}
+
+.footer{
+    /* background-color: rgb(118, 118, 118); */
+}
+
+/* PDF styles */
+
+.pdf_body{
+    background-color: white;
+}
+
+.pdf_body .content{
+    color: black;
+    padding: 20px;
+}
+
+.pdf_body table th{
+    color: black;
+}
+
+.pdf_body .form{
+    margin: auto;
+    width: auto;
+    /* border: 3px solid black; */
+    padding: 30px;
+    text-align: center;
+}
+
+.pdf_body a,
+.pdf_body button,
+.pdf_body input[type="button"],
+.pdf_body input[type="submit"] {
+    background-color: rgb(255, 77, 46);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Consolas';
+}
+
+.pdf_body a:hover,
+.pdf_body button:hover,
+.pdf_body button:hover,
+.pdf_body .form input[type="submit"]:hover {
+    /* box-shadow:0 0 10px 10px rgb(255, 121, 98); */
+    cursor: pointer;
+}
+
+.pdf_body button{
+    overflow: hidden;
+}
+
+.pdf_body ::selection{
+    background-color: lightgray;
+}
+
+.pdf_body select{
+    width: 80px;
+}
+
+.pdf_body a{
+    text-decoration: none;
+}
+
+.pdf_body p{
+    text-align: center;
+}
+
+@media print{
+    .pdf_hide{
+        display: none;
+    }   
+}
+
+@media print {
+    @page {
+        margin: 10px;
+        margin-left: 20px;
+        border-bottom: 10px solid red;
+    }
+
+    body {
+        padding: 20px;
+    }
+
+}
+

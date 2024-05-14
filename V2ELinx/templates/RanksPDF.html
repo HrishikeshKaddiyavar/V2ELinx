@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Get Marks PDF</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script>        
+            window.onload = function(){
+                document.getElementById("pdf_button").addEventListener("click", (event) => {
+                    event.preventDefault(); // Prevent form submission
+                    toggleElementsVisibility('pdf_hide'); // Hide elements
+                    const element = document.getElementById("pdf_content");
+                    const opt = {
+                        filename: 'StudentMarks.pdf',
+                        html2canvas: { scale: 2 },
+                        css: '/static/styles.css',
+                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                    };
+                    html2pdf().from(element).set(opt).save().then(function() {
+                        toggleElementsVisibility('pdf_hide', true); // Show elements after download
+                        setTimeout(function() {
+                            window.location.reload(); // Refresh the page after 1 second
+                        }, 0);
+                    });
+                });
+            }
+        
+            function toggleElementsVisibility(className, hide = true) {
+                const elements = document.querySelectorAll('.' + className);
+                elements.forEach(element => {
+                    element.style.display = hide ? 'none' : '';
+                });
+            }
+        </script>        
+        <script src="static/scripts.js"></script>
+        <style>
+            select:hover,
+            input[type="submit"]:hover{
+                box-shadow: 0 0 10px 10px white;
+            }
+        </style>
+    </head>
+    <body class="pdf_body" id="pdf_content">
+        <div class="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form">
+                    <h1>Get Student Ranks PDF</h1>
+                    <h3>Standard: {% if std == '0' %} School {% else %} {{ std }} {% endif %}</h3>
+                    <div class="form-group pdf_hide">
+                        <label for="standard">Select Standard: </label>
+                        <select class="standard" name="standard">
+                            <option value="8" {% if data and data.0.fields.standard == 8 %}selected{% endif %}>8</option>
+                            <option value="9" {% if data and data.0.fields.standard == 9 %}selected{% endif %}>9</option>
+                            <option value="10" {% if data and data.0.fields.standard == 10 %}selected{% endif %}>10</option>
+                            <option value="0" {% if data and data.0.fields.standard == 0 %}selected{% endif %}>School</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Get Student Marks" class="pdf_hide"><br><br>
+                    <button onclick="window.print();" class=" pdf_hide">Print PDF</button>
+                    <button id="pdf_button" onclick="window.onload();" class="pdf_hide">Download PDF</button>
+                    <br><br>
+                    <a href="/" class="pdf_hide">Return to Home Page</a><br><br>
+                    <p class="pdf_hide"><b>NOTE:</b> To download pdf you need internet connection</p>
+                    {% if data %}
+                        <center>
+                            <table id="studentTable">
+                                <tr>
+                                    <th data-sorted="ascending">Rank</th>
+                                    <th data-sorted="ascending">Register No</th>
+                                    <th data-sorted="ascending">Student Name</th>
+                                    <th data-sorted="ascending">Standard</th>
+                                    <th data-sorted="ascending">Marks</th>
+                                </tr>
+                                {% for studentdata in data %}
+                                    <tr>
+                                        <td>{{studentdata.fields.rank}}</td>
+                                        <td>{{studentdata.pk}}</td>
+                                        <td>{{studentdata.fields.studentName}}</td>
+                                        <td>{{studentdata.fields.standard}}</td>
+                                        <td>{{studentdata.fields.marks}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </center>
+                    {% else %}
+                        <p>No students found for the selected standard.</p>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

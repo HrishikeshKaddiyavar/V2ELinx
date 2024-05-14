@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Get Student Details</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <script src="static/scripts.js"></script>
+        <link rel="icon" href="/static/favicon.ico">
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/">Home</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="activated">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent">Add New Student</a>
+                    <a href="GetStudentDetails" class="activated">Get Student Details</a>
+                    <a href="Attendance">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Marks
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="GetMarks">Get Marks</a>
+                    <a href="SetMarks">Set Marks</a>
+                    <a href="UpdateMarks">Update Marks</a>
+                </div>
+            </div>
+            <a href="Ranks">Ranks</a>
+            <a href="Contact">Contact</a>
+            <!-- <a href="UserManual">User Manual</a> -->
+        </div>
+        <div id="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div id="form">
+                    <h1>Get Student Details</h1>
+                    <div class="form-group">
+                        <label for="standard">Select Standard: </label>
+                        <select id="standard" name="standard">
+                            <option value="8" {% if data and data.0.fields.standard == 8 %}selected{% endif %}>8</option>
+                            <option value="9" {% if data and data.0.fields.standard == 9 %}selected{% endif %}>9</option>
+                            <option value="10" {% if data and data.0.fields.standard == 10 %}selected{% endif %}>10</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Get Student Details"><br><br>
+                    <a href="GetStudentDetails/PDF" class="button">Download or Print PDF</a>
+                    <br><br><br>
+                    <center>
+                        {% if students %}
+                            <table id="studentTable">
+                                <tr>
+                                    <th data-sorted="ascending">Serial No</th>
+                                    <th data-sorted="ascending">Register No</th>
+                                    <th data-sorted="ascending">Student Name</th>
+                                    <th data-sorted="ascending">Attendance</th>
+                                </tr>
+                                {% for student, sl_no in students %}
+                                    <tr>
+                                        <td>{{ sl_no }}</td>
+                                        <td>{{ student.pk }}</td>
+                                        <td>{{ student.studentName }}</td>
+                                        <td>{{ student.attendance }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p>No students found for the selected standard.</p>
+                        {% endif %}
+                    </center>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

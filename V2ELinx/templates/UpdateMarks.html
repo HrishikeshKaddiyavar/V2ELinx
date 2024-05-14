@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Update Marks</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+        <script src="/static/scripts.js"></script>
+        <style>
+            table {
+                width: 30%;
+                align-items: center;
+            }
+            input[type="number"] {
+                margin: 0 auto; /* Centers horizontally */
+                display: block; /* Allows vertical alignment */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/">Home</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent">Add New Student</a>
+                    <a href="GetStudentDetails">Get Student Details</a>
+                    <a href="Attendance">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="activated">Student Marks
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="GetMarks">Get Marks</a>
+                    <a href="SetMarks">Set Marks</a>
+                    <a href="UpdateMarks" class="activated">Update Marks</a>
+                </div>
+            </div>
+            <a href="Ranks">Ranks</a>
+            <a href="Contact">Contact</a>
+            <!-- <a href="UserManual">User Manual</a> -->
+        </div>
+        <div id="content">
+            <div id="form">
+                <form action="" method="get" id="">
+                    <h1>Update Student Marks</h1>
+                    <div class="form-group">
+                        <label for="standard">Select Standard:</label>
+                        <select id="standard" name="standard">
+                            <option value="8" {% if std == '8' %}selected{% endif %}>8</option>
+                            <option value="9" {% if std == '9' %}selected{% endif %}>9</option>
+                            <option value="10" {% if std == '10' %}selected{% endif %}>10</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Refresh List">
+                </form>
+                {% if students %}
+                    <form action="" method="post" id="">
+                        {% csrf_token %}
+                        <center>
+                            <br>
+                            <table>
+                                <tr>
+                                    <th>Register No</th>
+                                    <th>Marks</th>
+                                </tr>
+                                {% for student in students %}
+                                    <tr>
+                                        <td>{{ student.registerNo }}</td>
+                                        <td><input type="number" name="marks_{{ student.registerNo }}" placeholder="Marks" max="100" min="0" value="{{ student.marks }}" style="width: 60%;"></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </center>
+                        <br>
+                        <input type="submit" value="Update Marks">
+                        <p><b>NOTE:</b> The displayed marks are previously entered marks of the respective student.</p>
+                    </form>
+                {% else %}
+                <p>No students found for the selected standard.</p>
+                {% endif %}
+                <p><b>NOTE:</b> Only students who have passed are displayed for updating their marks.</p>
+                <p><b>NOTE:</b> If you want to update marks for students who have failed, you have to navigate to the <a href="SetMarks">Set Marks</a> page.</p>
+            </div>
+        </div>
+    </body>
+</html>

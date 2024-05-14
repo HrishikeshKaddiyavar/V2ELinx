@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Contact</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+        <style>
+            #form{
+                color: white;
+            }
+            ::selection{
+                color: black !important;;
+            }
+            h1, h3{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/">Home</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent">Add New Student</a>
+                    <a href="GetStudentDetails">Get Student Details</a>
+                    <a href="Attendance">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Marks
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="GetMarks">Get Marks</a>
+                    <a href="SetMarks">Set Marks</a>
+                    <a href="UpdateMarks">Update Marks</a>
+                </div>
+            </div>
+            <a href="Ranks">Ranks</a>
+            <a href="Contact" class="activated">Contact</a>
+            <!-- <a href="UserManual">User Manual</a> -->
+        </div>
+        <div id="content">
+            <h1>To Know More <br> Contact Us</h1>
+            <h3>for more queries contact with <a href="https://srkmys.org/">Sri Ramakrishna Ashrama</a></h3>
+            <p><img src="static/mail.png">&nbsp;mysuru@rkmm.org</p>
+            <p><img src="static/phone.png">&nbsp;+91 821 241 7444 / 2424</p>
+            <p><img src="static/message.png">&nbsp;+91 9482417444</p>
+            <!-- <h1>Contact For Any Queries</h1>
+            <form action="MessageToMe.php" method="post">
+                <div class="form-group">
+                    <input type="text" name="name" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" id="subject" placeholder="Message Subject" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="message" id="message" placeholder="Message" required>
+                </div>
+                <input type="submit" value="Send Message">
+            </form> -->
+            <!-- <p style="font-size: 2px;">Designed and Developed: Hrishikesh Kaddiyavar</p> -->
+        </div>
+    </body>
+</html>

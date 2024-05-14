@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | About</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/">Home</a>
+            <a href="About" class="activated">About</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="#" class="dropdown-btn">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <!-- <img id="droptopImgHover" src="/static/droptop_img_hover.png" alt="droptop_img_hover"> -->
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent">Add New Student</a>
+                    <a href="GetStudentDetails">Get Student Details</a>
+                    <a href="Attendance">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <a href="Marks">Marks</a>
+            <a href="Ranks">Ranks</a>
+            <a href="Contact">Contact</a>
+        </div>
+        <div id="content">
+            
+        </div>
+    </body>
+</html>

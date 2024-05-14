@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Add New Student</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/">Home</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="activated">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent" class="activated">Add New Student</a>
+                    <a href="GetStudentDetails">Get Student Details</a>
+                    <a href="Attendance">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Marks
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="GetMarks">Get Marks</a>
+                    <a href="SetMarks">Set Marks</a>
+                    <a href="UpdateMarks">Update Marks</a>
+                </div>
+            </div>
+            <a href="Ranks">Ranks</a>
+            <a href="Contact">Contact</a>
+            <!-- <a href="UserManual">User Manual</a> -->
+        </div>
+        <div id="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div id="form">
+                    <h1>Add New Student</h1>
+                    <div class="form-group">
+                        <label for="registerNo">Enter Register No.:</label>
+                        <input type="text" name="registerNo" id="registerNo" placeholder="Register No" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentName">Enter Name:</label>
+                        <input type="text" name="studentName" id="studentName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="standard">Select Standard: </label>
+                        <select id="standard" name="standard">
+                            <option value="8" {% if std == '8' %}selected{% endif %}>8</option>
+                            <option value="9" {% if std == '9' %}selected{% endif %}>9</option>
+                            <option value="10" {% if std == '10' %}selected{% endif %}>10</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Add Student">
+                </div>
+            </form>         
+        </div>
+    </body>
+</html>

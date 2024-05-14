@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx | Get Student Details PDF</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script src="static/scripts.js"></script>
+        <style>
+            select:hover,
+            input[type="submit"]:hover{
+                box-shadow: 0 0 10px 10px white;
+            }
+        </style>
+    </head>
+    <body class="pdf_body" id="pdf_content">
+        <div class="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form">
+                    <h1>Get Student Details PDF</h1>
+                    <h3>Standard: {{ data }}</h3>
+                    <div class="form-group pdf_hide">
+                        <label for="standard">Select Standard: </label>
+                        <select class="standard" name="standard">
+                            <option value="8" {% if data and data.0.fields.standard == '8' %}selected{% endif %}>8</option>
+                            <option value="9" {% if data and data.0.fields.standard == '9' %}selected{% endif %}>9</option>
+                            <option value="10" {% if data and data.0.fields.standard == '10' %}selected{% endif %}>10</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Get Student Marks" class="pdf_hide"><br><br>
+                    <button onclick="window.print();" class=" pdf_hide">Print PDF</button>
+                    <button id="pdf_button" onclick="window.onload();" class="pdf_hide">Download PDF</button>
+                    <br><br>
+                    <a href="/" class="pdf_hide">Return to Home Page</a><br><br>
+                    <p class="pdf_hide"><b>NOTE:</b> To download pdf you need internet connection</p>
+                    <center>
+                        {% if students %}
+                            <table id="studentTable">
+                                <tr>
+                                    <th>Serial No</th>
+                                    <th>Register No</th>
+                                    <th>Student Name</th>
+                                    <th>Attendance</th>
+                                </tr>
+                                {% for student, sl_no in students %}
+                                    <tr>
+                                        <td>{{ sl_no }}</td>
+                                        <td>{{ student.pk }}</td>
+                                        <td>{{ student.studentName }}</td>
+                                        <td>{{ student.attendance }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p>No students found for the selected standard.</p>
+                        {% endif %}
+                    </center>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>V2ELinx</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico">
+        <style>
+            p{
+                font-size: large;
+            }
+            ::selection{
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sidebar">
+            <a href="/" class="activated">Home</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Management
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="AddNewStudent">Add New Student</a>
+                    <a href="GetStudentDetails">Get Student Details</a>
+                    <a href="Attendance">Attendance</a>
+                    <a href="UpdateStudentDetails">Update Student Details</a>
+                    <a href="RemoveStudent">Remove Student</a>
+                </div>
+            </div>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Student Marks
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="GetMarks">Get Marks</a>
+                    <a href="SetMarks">Set Marks</a>
+                    <a href="UpdateMarks">Update Marks</a>
+                </div>
+            </div>
+            <a href="Ranks">Ranks</a>
+            <div class="dropdown" onmouseover="showHoverImg()" onmouseout="hideHoverImg()">
+                <a href="" class="dropdown-btn">Authentication
+                    &nbsp;&nbsp;&nbsp;
+                    <img id="dropdownImg" src="/static/dropdown_img.png" alt="dropdown_img">
+                    <img id="droptopImg" src="/static/droptop_img.png" alt="droptop_img">
+                </a>
+                <div class="dropdown-content" onmouseover="showRegularImg()" onmouseout="hideRegularImg()">
+                    <a href="StaffSignIn">Staff Sign In</a>
+                    <a href="StaffSignUp">Staff Sign Up</a>
+                </div>
+            </div>
+            <a href="Contact">Contact</a>
+            <!-- <a href="UserManual">User Manual</a> -->
+        </div>
+        <div id="content">
+            <br>
+            <h1 style="text-align: center; font-size: 50px; color: dodgerblue;"><b>V2ELinx</b></h1>
+            <br><br>
+            <h2 style="text-align: justify;">Vivek Vidyarthi Examination (V2ELinx) is a platform designed to streamline examination management for students of standards 8, 9, and 10. Developed specifically for Sri Ramakrishna Ashrama in Mysore, this application facilitates efficient handling of student data, marks, attendance, and ranking calculations.</h2>
+            <h3>Features Overview:</h3>
+            <ul style="font-size: larger; font-weight: bold; text-align: justify;">
+                <li>Managing student information including register number, name, standard, marks, and total marks.</li>
+                <li>Adding, removing, updating, and viewing student details based on standard selection.</li>
+                <li>Setting attendance for each student.</li>
+                <li>Setting and viewing marks for individual subjects or total marks.</li>
+                <li>Calculating ranks based on standards (8, 9, 10) and school-wise.</li>
+                <li>Minimum passing marks requirement: 20 out of 100.</li>
+            </ul>
+            <hr>
+            <div class="footer">
+                <h3>for more queries contact with <a href="https://srkmys.org/">Sri Ramakrishna Ashrama</a></h3>
+                <p><img src="static/mail.png">&nbsp;mysuru@rkmm.org</p>
+                <p><img src="static/phone.png">&nbsp;+91 821 241 7444 / 2424</p>
+                <p><img src="static/message.png">&nbsp;+91 9482417444</p>
+                <p style="text-align: left;"><img src="static/copyright.png">&nbsp;2024 | All Rights Reserved<span style="float: right;"><a href="">Terms & Conditions</a></span></p>
+            </div>
+        </div>
+    </body>
+</html>
